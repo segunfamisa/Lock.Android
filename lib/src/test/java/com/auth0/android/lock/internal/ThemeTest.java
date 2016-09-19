@@ -25,9 +25,7 @@
 package com.auth0.android.lock.internal;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.AttrRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
@@ -35,7 +33,6 @@ import android.support.v4.content.ContextCompat;
 
 import com.auth0.android.lock.BuildConfig;
 import com.auth0.android.lock.R;
-import com.auth0.android.lock.internal.Theme;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +41,7 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
+import static com.auth0.android.lock.views.TestUtils.getLockThemeResourceId;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -233,13 +231,6 @@ public class ThemeTest {
         assertThat(theme.getCustomHeaderTitleColorRes(), is(equalTo(NOT_SET_RES)));
         assertThat(theme.getCustomPrimaryColorRes(), is(equalTo(NOT_SET_RES)));
         assertThat(theme.getCustomDarkPrimaryColorRes(), is(equalTo(NOT_SET_RES)));
-    }
-
-    private int getLockThemeResourceId(Context context, @AttrRes int attrResId) {
-        TypedArray a = context.obtainStyledAttributes(com.auth0.android.lock.R.style.Lock_Theme, new int[]{attrResId});
-        final int index = a.getResourceId(0, 0);
-        a.recycle();
-        return index;
     }
 
 }
